@@ -24,24 +24,25 @@ public class StudentController {
     }
 
     @GetMapping
+    @Operation(summary = "Get list of students")
     public List<Student> getStudents() {
         return studentService.getStudents();
     }
 
     @PostMapping
-    @Operation(summary = "Create new Student")
+    @Operation(summary = "Create new student")
     public Student createStudent(@RequestBody Student student) {
         return studentService.createStudent(student);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update Student")
+    @Operation(summary = "Update student")
     public Student updateStudent(@PathVariable String id, @RequestBody Student student) {
         return studentService.updateStudent(id, student);
     }
 
     @DeleteMapping
-    @Operation(summary = "Delete Student")
+    @Operation(summary = "Delete student")
     public void deleteStudent(String id) {
         studentService.deleteStudent(id);
     }
