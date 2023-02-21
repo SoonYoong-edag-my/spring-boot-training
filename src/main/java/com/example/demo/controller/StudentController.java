@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.Student;
 import com.example.demo.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class StudentController {
 
     @PostMapping
     @Operation(summary = "Create new student")
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody Student student) {
         return studentService.createStudent(student);
     }
 
