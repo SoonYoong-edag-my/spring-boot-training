@@ -32,7 +32,7 @@ public class StudentController {
 
     @PostMapping
     @Operation(summary = "Create new student")
-    public Student createStudent(@Valid @RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody Student student) { //BindingResult bindingResult custom error handling for @valid
         return studentService.createStudent(student);
     }
 
