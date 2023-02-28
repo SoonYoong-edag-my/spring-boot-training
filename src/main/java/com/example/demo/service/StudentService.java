@@ -27,17 +27,22 @@ public class StudentService {
     }
 
     public Student updateStudent(String studentId, Student student) {
-        Student existingStudent = students.stream().filter(s -> s.getId().equalsIgnoreCase(studentId)).findAny().orElse(null);
+        Student existingStudent = getExistingStudent(studentId);
         existingStudent.setFirstName(student.getFirstName());
         existingStudent.setLastName(student.getLastName());
         return existingStudent;
     }
 
+
     public void deleteStudent(String studentId) {
-        Student existingStudent = students.stream().filter(s -> s.getId().equalsIgnoreCase(studentId)).findAny().orElse(null);
+        Student existingStudent = getExistingStudent(studentId);
         if (existingStudent != null) {
             students.remove(existingStudent);
         }
 
+    }
+
+    private Student getExistingStudent(String studentId) {
+        return students.stream().filter(s -> s.getId().equalsIgnoreCase(studentId)).findAny().orElse(null);
     }
 }
